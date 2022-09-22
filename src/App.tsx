@@ -1,24 +1,29 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import "./App.css";
+import Header from "./components/Header";
+import Stories from "./components/Stories";
+import { topStoriesURL } from "./constants";
+import { fetchData } from "./utils/fetchData";
+import { get10RandomStories } from "./utils/get10RandomStories";
 
 function App() {
+  const [topStoryIds, setTopStoryIds] = useState([]);
+  const selectedRandomStoryIds = get10RandomStories(topStoryIds);
+
+  useEffect(() => {
+    fetchData(topStoriesURL).then((res) => {
+      setTopStoryIds(res);
+    });
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header />
+      <div>
+        {selectedRandomStoryIds.map((id) => (
+          <Stories storyId={id} key={id} />
+        ))}
+      </div>
     </div>
   );
 }
