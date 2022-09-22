@@ -2,12 +2,15 @@ import React, { useState } from "react";
 import { StoryItemsInterface } from "../contextApi/stories";
 import { UserInterface } from "../types";
 import { fetchData } from "../utils/fetchData";
+import "./Stories.scss";
+import format from "date-fns/format";
 
 type Props = {
   storyId: number;
+  profileImage: string;
 };
 
-function Stories({ storyId }: Props) {
+function Stories({ storyId, profileImage }: Props) {
   const [storyDetails, setStoryDetails] = useState<StoryItemsInterface>();
   const [userDetails, setUserDetails] = useState<UserInterface>();
   if (!storyDetails) {
@@ -22,13 +25,36 @@ function Stories({ storyId }: Props) {
   }
 
   return (
-    <div>
-      <div>story title: {storyDetails?.title}</div>
-      <div> story url: {storyDetails?.url}</div>
-      <div>story timestamp: {storyDetails?.time}</div>
-      <div>story score: {storyDetails?.score}</div>
-      <div>author id: {storyDetails?.id}</div>
-      <div>author karma score: {userDetails?.karma}</div>
+    <div className="container">
+      <div className="story-title">
+        <p>{storyDetails?.title}</p>
+      </div>
+      <div className="author-info">
+        <div>
+          <div className="profile">
+            <img src={profileImage} alt="profile1" />
+          </div>
+        </div>
+        <div>
+          <div className="story-info">
+            <div>Score: {storyDetails?.score}</div>
+            <div>Timestamp: {format(storyDetails?.time || 0 * 1000, "Pp")}</div>
+          </div>
+          <div className="view-full">View Full Story: </div>
+          <div>
+            <div className="story-url">
+              <a href={storyDetails?.url} target="_blank" rel="noreferrer">
+                {storyDetails?.url}
+              </a>
+            </div>
+          </div>
+
+          <div className="about-author">
+            <div>ID: {storyDetails?.id}</div>
+            <div>Karma Score: {userDetails?.karma}</div>
+          </div>
+        </div>
+      </div>
     </div>
   );
 }
