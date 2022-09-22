@@ -6,6 +6,8 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+
+  padding-bottom: 4rem;
 }
 
 a {
@@ -17,14 +19,14 @@ a {
   scroll-behavior: smooth;
   transition: all 0.3s;
   box-sizing: border-box;
-  /* border: 1px dashed green; */
 }
 
 .grid-container {
   display: grid;
-  grid-template-columns: minmax(1rem, 1fr) minmax(1rem, 1100px) minmax(1rem, 1fr);
+  grid-template-columns: minmax(3rem, 1fr) minmax(3rem, 1100px) minmax(3rem, 1fr);
 }
 
 .App {
   grid-column-start: 2;
+  grid-column-end: 3;
 }

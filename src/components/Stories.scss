@@ -97,3 +97,41 @@
     }
   }
 }
+
+@media only screen and (max-width: 1000px) {
+  .story-wrapper {
+    gap: 2rem;
+  }
+  .profile {
+    width: 4rem;
+    height: 4rem;
+  }
+}
+
+@media only screen and (max-width: 900px) {
+  .story-wrapper {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .author-info {
+    padding: 1rem;
+  }
+  .profile {
+    width: 2rem;
+    height: 2rem;
+  }
+  .story-title {
+    padding: 2rem 1rem;
+    line-height: 2rem;
+    font-size: large;
+  }
+}
+
+@media only screen and (max-width: 650px) {
+  .profile {
+    display: none;
+  }
+}

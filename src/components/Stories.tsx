@@ -1,16 +1,15 @@
 import React, { useState } from "react";
-import { StoryItemsInterface } from "../contextApi/stories";
-import { UserInterface } from "../types";
-import { fetchData } from "../utils/fetchData";
-import "./Stories.scss";
 import format from "date-fns/format";
+import { fetchData } from "../utils/fetchData";
+import { StoryItemsInterface, UserInterface } from "../types";
+import "./Stories.scss";
 
-type Props = {
+type StoriesProps = {
   storyId: number;
   profileImage: string;
 };
 
-function Stories({ storyId, profileImage }: Props) {
+function Stories({ storyId, profileImage }: StoriesProps) {
   const [storyDetails, setStoryDetails] = useState<StoryItemsInterface>();
   const [userDetails, setUserDetails] = useState<UserInterface>();
   if (!storyDetails) {

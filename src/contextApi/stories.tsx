@@ -1,21 +1,11 @@
 import { createContext, useState } from "react";
+import { StoryItemsInterface } from "../types";
 
 type ContextProps = {
   storyItems: StoryItemsInterface[];
   setStoryItems: React.Dispatch<React.SetStateAction<StoryItemsInterface[]>>;
 };
 
-export interface StoryItemsInterface {
-  by: string;
-  descendants: number;
-  id: number;
-  kids: number[];
-  score: number;
-  time: number;
-  title: string;
-  type: string;
-  url: string;
-}
 export const AppContext = createContext<ContextProps>({
   storyItems: [],
   setStoryItems: () => {},
